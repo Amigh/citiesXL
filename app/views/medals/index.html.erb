@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Medals</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Score</th>
+      <th>Image</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @medals.each do |medal| %>
+      <tr>
+        <td><%= medal.name %></td>
+        <td><%= medal.description %></td>
+        <td><%= medal.score %></td>
+        <td><%= medal.image %></td>
+        <td><%= link_to 'Show', medal %></td>
+        <td><%= link_to 'Edit', edit_medal_path(medal) %></td>
+        <td><%= link_to 'Destroy', medal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Medal', new_medal_path %>
