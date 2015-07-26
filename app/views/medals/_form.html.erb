@@ -1,33 +1,37 @@
 <%= form_for(@medal) do |f| %>
-  <% if @medal.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@medal.errors.count, "error") %> prohibited this medal from being saved:</h2>
+    <% if @medal.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@medal.errors.count, "error") %> prohibited this medal from being saved:</h2>
 
-      <ul>
-      <% @medal.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+          <ul>
+            <% @medal.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :name %><br>
+      <%= f.text_field :name %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
-  </div>
-  <div class="field">
-    <%= f.label :score %><br>
-    <%= f.number_field :score %>
-  </div>
-  <div class="field">
-    <%= f.label :image %><br>
-    <%= f.text_field :image %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="field">
+      <%= f.label :description %><br>
+      <%= f.text_field :description %>
+    </div>
+    <div class="field">
+      <%= f.label :type_name %><br>
+      <%= f.text_field :type_name %>
+    </div>
+    <div class="field">
+      <%= f.label :score %><br>
+      <%= f.number_field :score %>
+    </div>
+    <div class="field">
+      <%= f.label :image %><br>
+      <%= f.file_field :image %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
 <% end %>

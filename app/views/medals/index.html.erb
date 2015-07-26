@@ -9,6 +9,7 @@
       <th>Description</th>
       <th>Score</th>
       <th>Image</th>
+      <th>Type</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -19,7 +20,8 @@
         <td><%= medal.name %></td>
         <td><%= medal.description %></td>
         <td><%= medal.score %></td>
-        <td><%= medal.image %></td>
+        <td><%=image_tag medal.image %></td>
+        <td><%= medal.type_name %></td>
         <td><%= link_to 'Show', medal %></td>
         <td><%= link_to 'Edit', edit_medal_path(medal) %></td>
         <td><%= link_to 'Destroy', medal, method: :delete, data: { confirm: 'Are you sure?' } %></td>

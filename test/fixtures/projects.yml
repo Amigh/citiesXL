@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  population: 1
+  cash_flow: 1
+  income: 1
+  money: 1
+  satis_people_1: 1
+  satis_work_1: 1
+
+two:
+  population: 1
+  cash_flow: 1
+  income: 1
+  money: 1
+  satis_people_1: 1
+  satis_work_1: 1

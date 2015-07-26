@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Population:</strong>
+  <%= @project.population %>
+</p>
+
+<p>
+  <strong>Cash flow:</strong>
+  <%= @project.cash_flow %>
+</p>
+
+<p>
+  <strong>Income:</strong>
+  <%= @project.income %>
+</p>
+
+<p>
+  <strong>Money:</strong>
+  <%= @project.money %>
+</p>
+
+<p>
+  <strong>Satis people 1:</strong>
+  <%= @project.satis_people_1 %>
+</p>
+
+<p>
+  <strong>Satis work 1:</strong>
+  <%= @project.satis_work_1 %>
+</p>
+
+<%= link_to 'Edit', edit_student_project_path(@project.student,@project) %> |
+<%= link_to 'Back', student_projects_path %>

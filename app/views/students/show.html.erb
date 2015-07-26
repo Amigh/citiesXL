@@ -12,7 +12,7 @@
 
 <p>
   <strong>Image:</strong>
-  <%= @student.image %>
+  <%= image_tag @student.avatar  ,:style => 'width:20px;height:20px;'%>
 </p>
 
 <p>
@@ -36,6 +36,7 @@
   <tr>
     <th>name</th>
     <th>score</th>
+    <th>type</th>
     <th>Image</th>
     <th colspan="3"></th>
   </tr>
@@ -45,7 +46,8 @@
       <tr>
         <td><%= medal.name %></td>
         <td><%= medal.score%></td>
-        <td><%= medal.image %></td>
+        <td><%= medal.type_name %></td>
+        <td><%= image_tag medal.image %></td>
         <td><%= link_to 'Show', medal %></td>
         <% if @student.medals.where(:id => medal.id).blank? %>
             <td><%= link_to 'Add medal ',{:controller => :students,:action => :add_medal ,:id => @student.id,:m_id => medal.id},method: :post %></td>
@@ -59,5 +61,5 @@
 
 
 
-<%= link_to 'Edit', edit_student_path(@student) %> |
+<%= link_to 'Edit', edit_student_path(@student) %> |<%= link_to 'projects', student_projects_path(@student) %>|
 <%= link_to 'Back', students_path %>

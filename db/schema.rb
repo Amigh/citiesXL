@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150722152046) do
+ActiveRecord::Schema.define(version: 20150725215024) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -45,12 +45,31 @@ ActiveRecord::Schema.define(version: 20150722152046) do
     t.string   "image"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "type_name"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.integer  "population"
+    t.integer  "cash_flow"
+    t.integer  "income"
+    t.integer  "money"
+    t.integer  "satis_people_1"
+    t.integer  "satis_people_2"
+    t.integer  "satis_people_3"
+    t.integer  "satis_people_4"
+    t.integer  "satis_work_1"
+    t.integer  "satis_work_2"
+    t.integer  "satis_work_3"
+    t.integer  "satis_work_4"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "student_id"
   end
 
   create_table "students", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "image"
+    t.string   "avatar"
     t.integer  "score"
     t.string   "class_name"
     t.integer  "class_number"
