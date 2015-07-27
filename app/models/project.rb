@@ -36,10 +36,38 @@ class Project < ActiveRecord::Base
   MEDAL_SAT_WORK_4_SILVER_LIMIT = 1231
   MEDAL_SAT_WORK_4_BRONZE_LIMIT = 1231
   belongs_to :student
+
+  def self.import(file)
+    spreadsheet = open_spreadsheet(file)
+    header = spreadsheet.row(1)
+    puts header
+    (2..spreadsheet.last_row).each do |i|
+      row = Hash[[header, spreadsheet.row(i)].transpose]
+      student = Student.find_by(:class_number => row['class_number'], :class_name => row['class_name'],:year =>row['year'])
+      project = Project.new
+      project.student_id = student.id
+      project.attributes = row.to_hash.slice(:population ,:cash_flow,:income)
+      project.save!
+    end
+  end
+
+
+  def self.open_spreadsheet(file)
+    case File.extname(file.original_filename)
+      when '.csv'  then Roo::Csv.new(file.path,    packed: nil,file_warning: :ignore)
+      when '.xls'  then Roo::Excel.new(file.path,  packed: nil,file_warning: :ignore)
+      when '.xlsx' then Roo::Excelx.new(file.path, packed: nil,file_warning: :ignore)
+      else raise "Unknown file type: #{file.original_filename}"
+    end
+  end
+
+
   def add_medal(student,medal)
     if medal
       if Medalization.where(:student_id => student.id,:medal_id => medal.id).blank?
         Medalization.create!(:student_id => student.id, :medal_id => medal.id)
+        student.score += medal.score
+        student.save!
       end
     end
   end

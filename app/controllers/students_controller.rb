@@ -7,6 +7,11 @@ class StudentsController < ApplicationController
     @students = Student.all
   end
 
+  def import
+    Student.import(params[:file])
+    redirect_to students_path, notice: "Students imported."
+  end
+
   def add_medal
     Medalization.create!(:student_id => params[:id], :medal_id => params[:m_id])
     redirect_to :controller => 'students' , :action => 'show'
@@ -79,6 +84,6 @@ class StudentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.require(:student).permit(:first_name, :last_name, :avatar, :score, :class_name, :class_number)
+      params.require(:student).permit(:first_name, :last_name, :avatar, :score, :class_name, :class_number,:year)
     end
 end

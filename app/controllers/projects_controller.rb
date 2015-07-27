@@ -3,6 +3,11 @@ class ProjectsController < ApplicationController
   # after_action only: [:update,:create]
   # GET /projects
   # GET /projects.json
+  def import
+    Project.import(params[:file])
+    redirect_to students_path, notice: "Projects imported."
+  end
+
   def index
     @student = Student.find(params[:student_id])
     @projects = @student.projects.all

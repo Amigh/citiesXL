@@ -16,6 +16,7 @@
       <th>Score</th>
       <th>Class name</th>
       <th>Class number</th>
+      <th>num of projects</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -29,6 +30,7 @@
         <td><%= student.score %></td>
         <td><%= student.class_name %></td>
         <td><%= student.class_number %></td>
+        <td><%= student.projects.count %></td>
         <td><%= link_to 'Show', student %></td>
         <td><%= link_to 'Edit', edit_student_path(student) %></td>
         <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -36,6 +38,22 @@
     <% end %>
   </tbody>
 </table>
+
+
+
+<h2>Import Students</h2>
+<%= form_tag import_students_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "Import" %>
+<% end %>
+
+<h2>Import Projects</h2>
+<%= form_tag import_projects_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "Import" %>
+<% end %>
+
+
 
 <br>
 

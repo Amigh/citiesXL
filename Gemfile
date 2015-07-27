@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 
-
+gem 'roo', '~> 2.1.0'
 gem 'carrierwave'
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

@@ -2,9 +2,11 @@ Rails.application.routes.draw do
   devise_for :admins
   resources :medals
   resources :students do
+    collection { post :import }
     resources :projects
   end
   post 'students/:id/add_medal/:m_id' => 'students#add_medal'
+  post 'projects' => 'projects#import', as: 'import_projects'
   delete 'students/:id/remove_medal/m_id' => 'students#remove_medal'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
