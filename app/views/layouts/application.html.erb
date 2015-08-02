@@ -7,8 +7,45 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div class="ui left  visible vertical inverted sidebar labeled icon menu">
+  <%= link_to root_path ,:class => 'item' do %>
+      <i class="home icon"></i>
+      خانه
+  <% end %>
+  <%= link_to medals_path ,:class => 'item' do %>
+      <i class="certificate  icon"></i>
+      مدال ها
+  <% end %>
+  <%= link_to students_path ,:class => 'item' do %>
+      <i class="users  icon"></i>
+      دانش آموزان
+  <% end %>
+  <% unless admin_signed_in? %>
+      <%= link_to new_admin_session_path ,:class => 'item' do %>
+          <i class="sign in icon"></i>
+          ورود
+      <% end %>
+  <% else %>
+      <%= link_to new_student_path,:class => 'item' do %>
+          <i class="plus icon"></i>
+          افزودن دانش آموز
+      <% end %>
+      <%= link_to new_medal_path ,:class => 'item' do %>
+          <i class="plus icon"></i>
+          افزودن مدال
+      <% end %>
+      <%= link_to destroy_admin_session_path ,:method => 'delete',:class => 'item' do %>
+          <i class="sign out icon"></i>
+          خروج
+      <% end %>
 
-<%= yield %>
+  <% end %>
+</div>
 
+<div class="ui grid container centered">
+  <div class="eight wide column">
+    <%= yield %>
+  </div>
+</div>
 </body>
 </html>

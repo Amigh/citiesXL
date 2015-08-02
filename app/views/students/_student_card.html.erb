@@ -1,0 +1,27 @@
+<%= link_to student_path(student.id),:class => 'ui card' do %>
+    <div class=" ui link card">
+      <div class="ui image">
+        <%= image_tag student.avatar %>
+      </div>
+      <div class="ui content">
+        <div class="ui header">
+          <%= student.first_name + ' '+student.last_name %>
+        </div>
+        <div class="ui meta">
+          <%= 'کلاس: ' + student.class_name%>
+        </div>
+        <div class="ui meta">
+          <%= 'شماره لیست: ' + student.class_number.to_s%>
+        </div>
+
+        <div class="ui description">
+
+        </div>
+      </div>
+      <div class="ui extra content">
+      <span class="ui  floated">
+        <%= 'امتیاز: ' + student.score.to_s  %>
+      </span>
+      </div>
+    </div>
+<% end %>

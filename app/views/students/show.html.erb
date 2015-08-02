@@ -1,64 +1,27 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>First name:</strong>
-  <%= @student.first_name %>
-</p>
-
-<p>
-  <strong>Last name:</strong>
-  <%= @student.last_name %>
-</p>
-
-<p>
-  <strong>Image:</strong>
-  <%= image_tag @student.avatar  ,:style => 'width:20px;height:20px;'%>
-</p>
-
-<p>
-  <strong>Score:</strong>
-  <%= @student.score %>
-</p>
-
-<p>
-  <strong>Class name:</strong>
-  <%= @student.class_name %>
-</p>
-
-<p>
-  <strong>Class number:</strong>
-  <%= @student.class_number %>
-</p>
-
-<hr>
-<table>
-  <thead>
-  <tr>
-    <th>name</th>
-    <th>score</th>
-    <th>type</th>
-    <th>Image</th>
-    <th colspan="3"></th>
-  </tr>
-  </thead>
-  <tbody>
-  <% @medals.each do |medal| %>
-      <tr>
-        <td><%= medal.name %></td>
-        <td><%= medal.score%></td>
-        <td><%= medal.type_name %></td>
-        <td><%= image_tag medal.image %></td>
-        <td><%= link_to 'Show', medal %></td>
-        <% if @student.medals.where(:id => medal.id).blank? %>
-            <td><%= link_to 'Add medal ',{:controller => :students,:action => :add_medal ,:id => @student.id,:m_id => medal.id},method: :post %></td>
-        <% else %>
-            <td><%= link_to 'remove medal',{:controller => :students,:action => :remove_medal ,:id => @student.id,:m_id => medal.id},method: :delete %></td>
-        <% end %>
-      </tr>
-  <% end %>
-  </tbody>
-</table>
-
+<div class="ui segments">
+  <div class="ui segment">
+    <div class="ui right rail">
+      <%= render 'students/student_card', :student => @student%>
+    </div>
+    <div class="ui header">
+      مدال ها
+    </div>
+  </div>
+  <div class="ui secondary segment" id="stickseg">
+    <div class="ui three link cards">
+      <% @medals.each do |medal| %>
+          <%= render 'medals/medal_card' , :medal => medal%>
+          <!--<td>< %= link_to 'Show', medal %></td>-->
+          <!--< % if @student.medals.where(:id => medal.id).blank? %>-->
+          <!--<td>< %= link_to 'Add medal ',{:controller => :students,:action => :add_medal ,:id => @student.id,:m_id => medal.id},method: :post %></td>-->
+          <!--< % else %>-->
+          <!--<td>< %= link_to 'remove medal',{:controller => :students,:action => :remove_medal ,:id => @student.id,:m_id => medal.id},method: :delete %></td>-->
+          <!--< % end %>-->
+          <!--</tr>-->
+      <% end %>
+    </div>
+  </div>
+</div>
 
 
 <%= link_to 'Edit', edit_student_path(@student) %> |<%= link_to 'projects', student_projects_path(@student) %>|

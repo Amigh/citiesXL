@@ -1,35 +1,31 @@
-<p id="notice"><%= notice %></p>
+<div class="ui fluid green card">
+  <div class="content">
+    <div class="header">
+        لیست تمام مدال ها
+    </div>
+  </div>
 
-<h1>Listing Medals</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Score</th>
-      <th>Image</th>
-      <th>Type</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @medals.each do |medal| %>
-      <tr>
-        <td><%= medal.name %></td>
-        <td><%= medal.description %></td>
-        <td><%= medal.score %></td>
-        <td><%=image_tag medal.image %></td>
-        <td><%= medal.type_name %></td>
-        <td><%= link_to 'Show', medal %></td>
-        <td><%= link_to 'Edit', edit_medal_path(medal) %></td>
-        <td><%= link_to 'Destroy', medal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+  <div class="content">
+    <p>
+      در این صفحه شما می توانید لیست تمامی مدال های موجود در کلاس شهرسازی را ببینید و از شرایط کسب و امتیاز هر مدال آگاهی پیدا کنید
+    </p>
+  </div>
+</div>
+<div class="ui three cards link">
+  <% @medals.each do |medal| %>
+      <%= render 'medal_card', :medal => medal %>
+  <% end %>
+</div>
+<!--<td>< %= link_to 'Show', medal %></td>-->
+<!--<td>< %= link_to 'Edit', edit_medal_path(medal) %></td>-->
+<!--<td>< %= link_to 'Destroy', medal, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
 <br>
 
-<%= link_to 'New Medal', new_medal_path %>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.special.card .image').dimmer({
+            on: 'hover'
+        });
+    });
+</script>
+<!--< %= link_to 'New Medal', new_medal_path %>-->

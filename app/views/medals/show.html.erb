@@ -1,24 +1,33 @@
-<p id="notice"><%= notice %></p>
+<div class="ui segments">
+  <div class="ui segment">
+    <div class="ui header">
+      توضیحات
+    </div>
+    <div class="ui right rail ">
+      <div class=" ui card "  style="text-align: center">
+        <div class="ui content ">
+          <%= image_tag @medal.image ,:class => 'centered rounded'%>
+        </div>
+        <div class="ui content">
+          <div class="ui header">
+            <%= 'مدال'+' '+@medal.per_type_name + ' '+ @medal.display_name %>
+          </div>
+        </div>
+        <div class=" content">
+          <div class="ui meta green label fluid">
+            <i class="diamond icon"></i>
+            <%= 'امتیاز: ' + @medal.score.to_s  %>
+          </div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @medal.name %>
-</p>
+          <div class="ui description">
 
-<p>
-  <strong>Description:</strong>
-  <%= @medal.description %>
-</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<p>
-  <strong>Score:</strong>
-  <%= @medal.score %>
-</p>
-
-<p>
-  <strong>Image:</strong>
-  <%= @medal.image %>
-</p>
-
-<%= link_to 'Edit', edit_medal_path(@medal) %> |
-<%= link_to 'Back', medals_path %>
+  <div class="ui green  secondary segment">
+    <%= @medal.description %>
+  </div>
+</div>

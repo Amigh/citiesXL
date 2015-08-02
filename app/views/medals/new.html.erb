@@ -2,4 +2,23 @@
 
 <%= render 'form' %>
 
+
+<hr>
+
+<h2>Import Students</h2>
+<%= form_tag import_students_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "Import" %>
+    <% end %>
+
+<h2>Import Projects</h2>
+<%= form_tag import_projects_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "Import" %>
+    <% end %>
+
+
+
+
+
 <%= link_to 'Back', medals_path %>
