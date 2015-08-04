@@ -3,6 +3,8 @@ class Student < ActiveRecord::Base
   has_many :projects
   has_many :medalizations
   has_many :medals , :through => :medalizations
+  validates :first_name,:last_name,:score,:avatar,:class_name,:class_number,:year,presence: true
+
 
   def self.import(file)
     spreadsheet = open_spreadsheet(file)

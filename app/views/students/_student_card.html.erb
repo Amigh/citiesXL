@@ -1,27 +1,49 @@
-<%= link_to student_path(student.id),:class => 'ui card' do %>
-    <div class=" ui link card">
-      <div class="ui image">
-        <%= image_tag student.avatar %>
+<div class=" ui link special card">
+  <div class="blurring dimmable image">
+    <div class="ui dimmer">
+      <div class="content">
+        <div class="ui center">
+          <% if admin_signed_in? %>
+              <div class="ui vertical labeled icon buttons">
+                <%= link_to  edit_student_path(student),:class => "ui  button" do%>
+                    <i class="edit icon"></i>
+                    ویرایش
+                <% end %>
+                <%= link_to  student, method: :delete, data: { confirm: 'Are you sure?' } ,:class => "ui red button" do%>
+                    <i class="trash icon"></i>
+                    حذف
+                <% end %>
+              </div>
+          <% end %>
+        </div>
       </div>
-      <div class="ui content">
-        <div class="ui header">
-          <%= student.first_name + ' '+student.last_name %>
-        </div>
-        <div class="ui meta">
-          <%= 'کلاس: ' + student.class_name%>
-        </div>
-        <div class="ui meta">
-          <%= 'شماره لیست: ' + student.class_number.to_s%>
-        </div>
-
-        <div class="ui description">
-
-        </div>
-      </div>
-      <div class="ui extra content">
+    </div>
+    <%= image_tag student.avatar %>
+  </div>
+  <div class="ui content">
+    <div class="ui header">
+      <%= student.first_name + ' '+student.last_name %>
+    </div>
+    </div>
+  <div class="content">
+    <div class="ui meta">
+      <%= 'کلاس: ' + student.class_name%>
+    </div>
+    <div class="ui meta">
+      <%= 'شماره لیست: ' + student.class_number.to_s%>
+    </div>
+    <div class="ui meta">
+      <%= 'تعداد مدال ها:' + ' '+student.medals.count.to_s%>
+    </div>
+  </div>
+  <div class="ui extra content">
       <span class="ui  floated">
         <%= 'امتیاز: ' + student.score.to_s  %>
       </span>
-      </div>
-    </div>
-<% end %>
+  </div>
+  <%= link_to student_path(student),:class => "ui green labeled icon bottom attached button" do%>
+      <i class="arrow circle down icon"></i>
+      ...بیشتر
+  <% end %>
+</div>
+

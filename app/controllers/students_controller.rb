@@ -1,10 +1,12 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [:add_medal,:remove_medal,:show, :edit, :update, :destroy]
-  before_action :authenticate_admin! , only: [:new,:create,:add_medal,:remove_medal,:edit,:update,:destroy]
+  before_action :authenticate_admin! , only: [:new,:create,:add_medal,:remove_medal,:edit,:update,:destroy,:import]
   # GET /students
   # GET /students.json
   def index
     @students = Student.all
+    #todo
+    # @students = Student.where(:class_name=> sort_class,:year=>sort_year).all
   end
 
   def import
@@ -14,17 +16,22 @@ class StudentsController < ApplicationController
 
   def add_medal
     Medalization.create!(:student_id => params[:id], :medal_id => params[:m_id])
+    @student.score += Medal.find_by(:id => params[:m_id]).score
+    @student.save!
     redirect_to :controller => 'students' , :action => 'show'
   end
 
   def remove_medal
     Medalization.where(:student_id => params[:id], :medal_id => params[:m_id]).delete_all
+    @student.score -= Medal.find_by(:id => params[:m_id]).score
+    @student.save!
     redirect_to :controller => 'students' , :action => 'show'
   end
   # GET /students/1
   # GET /students/1.json
   def show
-    @medals = Medal.all
+    @medals = @student.medals
+    @not_mine_medals = Medal.all - @medals
   end
 
   # GET /students/new
@@ -77,13 +84,21 @@ class StudentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_student
-      @student = Student.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def student_params
-      params.require(:student).permit(:first_name, :last_name, :avatar, :score, :class_name, :class_number,:year)
-    end
+  def sort_year
+    params[:year] || "1392-1393"
+  end
+
+  def sort_class
+    params[:class_name] || "الف"
+  end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_student
+    @student = Student.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def student_params
+    params.require(:student).permit(:first_name, :last_name, :avatar, :score, :class_name, :class_number,:year)
+  end
 end

@@ -2,7 +2,7 @@ class Medal < ActiveRecord::Base
   mount_uploader :image, AvatarUploader
   has_many :medalizations
   has_many :students , :through => :medalizations
-
+  validates :description,:type_name, :score,:display_name,:name, :image,presence: true
   def per_type_name()
     if self.type_name == 'gold'
       return 'طلا'

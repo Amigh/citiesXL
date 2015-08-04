@@ -1,0 +1,60 @@
+
+<div class=" ui special link card ">
+
+  <div class="blurring dimmable image">
+    <div class="ui dimmer">
+      <div class="content">
+        <div class="ui center">
+          <% if admin_signed_in? %>
+              <div class="ui vertical labeled icon buttons" >
+                <%= link_to  edit_medal_path(medal),:class => "ui  button" do%>
+                    <i class="edit icon"></i>
+                    ویرایش
+                <% end %>
+                <% if student.medalizations.where(:student_id => student.id , :medal_id => medal.id).blank? %>
+                    <%= link_to add_medal_path(:id => student.id, :m_id => medal.id),:method =>'POST' ,:class => "ui green button" do %>
+                        <i class="checkmark icon"></i>
+                        اعطا
+                    <% end %>
+                <%else%>
+                    <%= link_to  remove_medal_path(:id => student.id,:m_id => medal.id) ,method: :delete ,:class => "ui orange button" do%>
+                        <i class="remove icon"></i>
+                        پس گرفتن
+                    <% end %>
+                <% end %>
+                <%= link_to  medal, method: :delete, data: { confirm: 'Are you sure?' } ,:class => "ui red button" do%>
+                    <i class="trash icon"></i>
+                    حذف
+                <% end %>
+              </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <%= image_tag medal.image %>
+  </div>
+
+
+  <div class="ui content " id="disable-content">
+    <div class="ui header">
+      <%= 'مدال'+' '+medal.per_type_name + ' '+ medal.display_name %>
+    </div>
+  </div>
+  <div class="content" id="disable-content">
+    <div class="ui meta label fluid">
+      <i class="diamond icon"></i>
+      <%= 'امتیاز: ' + medal.score.to_s  %>
+    </div>
+  </div>
+  <%= link_to medal_path(medal),:class => "ui green labeled icon bottom attached button" ,:id => "disable-content" do%>
+      <i class="arrow circle down icon"></i>
+      ...بیشتر
+  <% end %>
+</div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.special.card .image').dimmer({
+            on: 'hover'
+        });
+    });
+</script>

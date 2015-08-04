@@ -27,3 +27,24 @@ body{
     background-color: #f5f5f5;
     margin-top: 70px;
 }
+
+.disable img {
+    opacity: 0.4;
+    filter: alpha(opacity=40); /* msie */
+    /*background-color: #000;*/
+
+}
+.disable #disable-content{
+    opacity: 0.4;
+    filter: alpha(opacity=40); /* msie */
+    /*background-color: #000;*/
+}
+/*.disable  {*/
+    /*opacity: 0.4;*/
+    /*filter: alpha(opacity=40); /!* msie *!/*/
+    /*background-color: #000;*/
+/*}*/
+/*#card-menu{*/
+    /*opacity: 1 !important;*/
+
+/*}*/

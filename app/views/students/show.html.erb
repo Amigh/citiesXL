@@ -1,28 +1,68 @@
 <div class="ui segments">
   <div class="ui segment">
     <div class="ui right rail">
-      <%= render 'students/student_card', :student => @student%>
+
+      <div class=" ui  card">
+
+        <div class="ui image ">
+          <%= image_tag @student.avatar %>
+        </div>
+        <div class="ui content">
+          <div class="ui header">
+            <%= @student.first_name + ' '+@student.last_name %>
+          </div>
+        </div>
+        <div class="content">
+          <div class="ui meta">
+            <%= 'کلاس: ' + @student.class_name%>
+          </div>
+          <div class="ui meta">
+            <%= 'شماره لیست: ' + @student.class_number.to_s%>
+          </div>
+          <div class="ui meta">
+            <%= 'تعداد مدال ها:' + ' '+@student.medals.count.to_s%>
+          </div>
+        </div>
+        <div class="ui extra content">
+      <span class="ui  floated">
+        <%= 'امتیاز: ' + @student.score.to_s  %>
+      </span>
+        </div>
+        <%= link_to student_projects_path(@student),:class => "ui green labeled icon bottom attached button" do%>
+            <i class="tasks icon"></i>
+            پروژه ها
+        <% end %>
+      </div>
+
+
+
     </div>
     <div class="ui header">
       مدال ها
     </div>
   </div>
-  <div class="ui secondary segment" id="stickseg">
+  <div class="ui green secondary segment" id="stickseg">
+    <div class="ui horizontal divider ">
+لیست مدال هایی که شما کسب کرده اید
+    </div>
+    <% if @medals.count == 0 %>
+        <div class="ui message warning">
+          متاسفانه شما هیچ مدالی ندارید
+        </div>
+        <% end %>
     <div class="ui three link cards">
       <% @medals.each do |medal| %>
-          <%= render 'medals/medal_card' , :medal => medal%>
-          <!--<td>< %= link_to 'Show', medal %></td>-->
-          <!--< % if @student.medals.where(:id => medal.id).blank? %>-->
-          <!--<td>< %= link_to 'Add medal ',{:controller => :students,:action => :add_medal ,:id => @student.id,:m_id => medal.id},method: :post %></td>-->
-          <!--< % else %>-->
-          <!--<td>< %= link_to 'remove medal',{:controller => :students,:action => :remove_medal ,:id => @student.id,:m_id => medal.id},method: :delete %></td>-->
-          <!--< % end %>-->
-          <!--</tr>-->
+          <%= render 'medals/medal_card_add_medal' , :medal => medal ,:student =>@student%>
+      <% end %>
+    </div>
+    <div class="ui horizontal divider ">
+      مدال هایی که باید کسب کنید
+    </div>
+    <div class="ui three link cards disable">
+      <% @not_mine_medals.each do |medal| %>
+          <%= render 'medals/medal_card_add_medal' , :medal => medal ,:student =>@student%>
       <% end %>
     </div>
   </div>
 </div>
 
-
-<%= link_to 'Edit', edit_student_path(@student) %> |<%= link_to 'projects', student_projects_path(@student) %>|
-<%= link_to 'Back', students_path %>

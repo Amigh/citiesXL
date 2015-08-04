@@ -7,9 +7,9 @@ Rails.application.routes.draw do
     collection { post :import }
     resources :projects
   end
-  post 'students/:id/add_medal/:m_id' => 'students#add_medal'
+  post 'students/:id/add_medal/:m_id' => 'students#add_medal' ,as: 'add_medal'
   post 'projects' => 'projects#import', as: 'import_projects'
-  delete 'students/:id/remove_medal/m_id' => 'students#remove_medal'
+  delete 'students/:id/remove_medal/:m_id' => 'students#remove_medal' ,as: 'remove_medal'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
