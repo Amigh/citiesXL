@@ -15,7 +15,6 @@ class StudentsController < ApplicationController
   end
 
   def import
-
     Student.import(params[:file])
     redirect_to students_path
   end

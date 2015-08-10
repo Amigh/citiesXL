@@ -38,19 +38,12 @@
         <% end %>
       </div>
   <%end%>
-  <div class="hidden ui icon success message " id="mes">
-    <i class=" file excel outline icon"></i>
-    <div class="content">
-      <p id="namefile" ></p>
-    </div>
-  </div>
-
 
   <div class="divider horizontal ui ">بروز رسانی پروژه های دانش آموزان</div>
   <%= form_tag ({:controller =>'projects',:action=>'import',:method => :post}) ,{:multipart => true} do%>
-      <%= file_field '',:file ,:style =>'display:none;' ,:id =>'file'%>
+      <%= file_field '',:file ,:style =>'display:none;' ,:id =>'pfile'%>
       <div class="ui input action">
-        <label for='file' class='ui action icon right labeled button' style="border-radius:0.28571429rem 0px 0px 0.28571429rem">
+        <label for='pfile' class='ui action icon right labeled button' style="border-radius:0.28571429rem 0px 0px 0.28571429rem">
           فایل
           <i class="file icon"></i>
         </label>
@@ -78,6 +71,12 @@
         $('.ui.dropdown')
                 .dropdown()
         ;
+    });
+    $('#pfile').change(function() {
+        var str;
+        str = $(this).val();
+        $('#namefile').text(str);
+        $('#mes').removeClass("hidden");
     });
     $('#file').change(function() {
         var str;

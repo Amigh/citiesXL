@@ -5,8 +5,11 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def import
-    # Project.import(params[:file])
-    # redirect_to students_path, notice: "Projects imported."
+    puts '#####'
+    puts params[:file]
+    puts '#####'
+    Project.import(params[:file])
+    redirect_to students_path, notice: "Projects imported."
   end
 
   def export
@@ -44,7 +47,6 @@ class ProjectsController < ApplicationController
     @project.student_id = @student.id
     respond_to do |format|
       if @project.save
-        @project.grade()
         format.html { redirect_to student_projects_path, notice: 'Project was successfully created.' }
         format.json { render :show, status: :created, location: @project }
       else
