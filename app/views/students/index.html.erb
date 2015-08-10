@@ -1,38 +1,36 @@
 <div class="ui fluid green card">
   <div class="right ui rail">
 
-    <div class="ui segment attached" style="text-align: left">
-      <div class="ui selection dropdown fluid">
-        <input name="year" type="hidden">
-        <div class="default text">سال تحصیل</div>
-        <i class="dropdown icon"></i>
-        <div class="menu">
-          <div class="item" data-value="0">Value</div>
-          <div class="item" data-value="1">Another Value</div>
-        </div>
-      </div>
 
-      <div class="ui form" style="text-align: right">
-        <div class="grouped fields">
-          <div class="field">
-            <div class="ui slider checkbox">
-              <input name="throughput" checked="checked" type="radio">
-              <label>کلاس الف</label>
+    <%= form_tag ({:controller =>'students',:action=>'index'}) ,{:class => 'ui form',:multipart => true,:method => 'get'} do%>
+        <div class="ui segment attached" style="text-align: left">
+          <%= select_tag(:year, options_for_select([['1392-1393'], ['1393-1394'], ['1394-1395']], selected: :year),
+                         :class =>'ui selection  fluid dropdown') %>
+
+
+          <div class="grouped fields" style="text-align: right">
+            <div class="field">
+              <div class="ui slider checkbox">
+                <%= radio_button_tag :class_name ,'الف' ,true%>
+                <label>کلاس الف</label>
+              </div>
+            </div>
+            <div class="field">
+              <div class="ui slider checkbox">
+                <%= radio_button_tag :class_name ,'ب' ,false%>
+                <label>کلاس ب</label>
+              </div>
             </div>
           </div>
-          <div class="field">
-            <div class="ui slider checkbox">
-              <input name="throughput" type="radio">
-              <label>کلاس ب</label>
-            </div>
-          </div>
-        </div>
-      </div>
 
-    </div>
-    <div class="ui green button attached bottom">
-      جستجو
-    </div>
+
+        </div>
+
+        <%= button_tag  type: 'submit',:class => 'ui green button fluid labeled icon  bottom attached' do %>
+            <i class="search icon"></i>
+            جستجو...
+        <% end %>
+    <% end %>
 
   </div>
   <div class="content">
@@ -47,6 +45,16 @@
   </div>
 </div>
 
+<div class="ui warning message">
+  <div style="text-align: center;direction: rtl">
+    <i class="caret down icon"></i>
+    نمایش دانش آموزان سال
+    <%= @year %>
+    کلاس سوم
+    <%= @class_name %>
+    <i class="caret down icon"></i>
+  </div>
+</div>
 <div class="ui three link cards" id="cardlist">
 
   <% @students.each do |student| %>
@@ -60,12 +68,13 @@
                 .dropdown()
         ;
     });
-
+    <% if admin_signed_in? %>
     $(document).ready(function() {
         $('.special.card .image').dimmer({
             on: 'hover'
         });
     });
+    <% end %>
 </script>
 <!--< %= link_to 'Show', student %>-->
 <!--< %= link_to 'Edit', edit_student_path(student) %>-->

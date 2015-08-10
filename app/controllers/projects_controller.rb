@@ -5,11 +5,17 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def import
-    Project.import(params[:file])
-    redirect_to students_path, notice: "Projects imported."
+    # Project.import(params[:file])
+    # redirect_to students_path, notice: "Projects imported."
+  end
+
+  def export
+    Project.export(params[:year])
+    send_file "public/projects.xls",:filename=> 'project.xls', :type =>  "application/vnd.ms-excel"
   end
 
   def index
+    @counter = 0
     @student = Student.find(params[:student_id])
     @projects = @student.projects.all
   end
@@ -81,6 +87,8 @@ class ProjectsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
       params.require(:project).permit(:population, :cash_flow, :income, :money, :satis_people_1,:satis_people_2,
-                                      :satis_people_3,:satis_people_4, :satis_work_1,:satis_work_2,:satis_work_3,:satis_work_4)
+                                      :satis_people_3,:satis_people_4, :satis_work_1,:satis_work_2,
+                                      :satis_work_3,:satis_work_4,:satis_shop ,:satis_services ,
+                                      :satis_trafic,:satis_env,:satis_freight)
     end
 end

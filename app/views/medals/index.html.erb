@@ -1,7 +1,7 @@
 <div class="ui fluid green card">
   <div class="content">
     <div class="header">
-        لیست تمام مدال ها
+      لیست تمام مدال ها
     </div>
   </div>
 
@@ -20,12 +20,13 @@
 <!--<td>< %= link_to 'Edit', edit_medal_path(medal) %></td>-->
 <!--<td>< %= link_to 'Destroy', medal, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
 <br>
-
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('.special.card .image').dimmer({
-            on: 'hover'
+<% if admin_signed_in? %>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.special.card .image').dimmer({
+                on: 'hover'
+            });
         });
-    });
-</script>
+    </script>
+<% end %>
 <!--< %= link_to 'New Medal', new_medal_path %>-->

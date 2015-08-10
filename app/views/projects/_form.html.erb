@@ -1,65 +1,96 @@
-<%= form_for([@student ,@project]) do |f| %>
-    <% if @project.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+<div class="ui green segment">
+  <%= form_for([@student ,@project],:html => {:class => 'ui form'}) do |f| %>
+      <% if @project.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
 
-          <ul>
-            <% @project.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
+            <ul>
+              <% @project.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+      <% end %>
 
-    <div class="field">
-      <%= f.label :population %><br>
-      <%= f.number_field :population %>
-    </div>
-    <div class="field">
-      <%= f.label :cash_flow %><br>
-      <%= f.number_field :cash_flow %>
-    </div>
-    <div class="field">
-      <%= f.label :income %><br>
-      <%= f.number_field :income %>
-    </div>
-    <div class="field">
-      <%= f.label :money %><br>
-      <%= f.number_field :money %>
-    </div>
-    <div class="field">
-      <%= f.label :satis_people_1 %><br>
-      <%= f.number_field :satis_people_1 %>
-    </div>
-    <div class="field">
-      <%= f.label :satis_people_2 %><br>
-      <%= f.number_field :satis_people_2 %>
-    </div>
-    <div class="field">
-      <%= f.label :satis_people_3 %><br>
-      <%= f.number_field :satis_people_3 %>
-    </div>
-    <div class="field">
-      <%= f.label :satis_people_4 %><br>
-      <%= f.number_field :satis_people_4 %>
-    </div>
-    <div class="field">
-      <%= f.label :satis_work_1 %><br>
-      <%= f.number_field :satis_work_1 %>
-    </div>
-    <div class="field">
-      <%= f.label :satis_work_2 %><br>
-      <%= f.number_field :satis_work_2 %>
-    </div>
-    <div class="field">
-      <%= f.label :satis_work_4 %><br>
-      <%= f.number_field :satis_work_3 %>
-    </div>
-    <div class="field">
-      <%= f.label :satis_work_4 %><br>
-      <%= f.number_field :satis_work_4 %>
-    </div>
-    <div class="actions">
-      <%= f.submit %>
-    </div>
-<% end %>
+      <div class="field">
+        <%= f.label :population %><br>
+        <%= f.number_field :population %>
+      </div>
+      <div class="field">
+        <%= f.label :cash_flow %><br>
+        <%= f.number_field :cash_flow %>
+      </div>
+      <div class="field">
+        <%= f.label :income %><br>
+        <%= f.number_field :income %>
+      </div>
+      <div class="field">
+        <%= f.label :money %><br>
+        <%= f.number_field :money %>
+      </div>
+      <div class="field">
+        <%= f.label :satis_people_1 %><br>
+        <%= f.number_field :satis_people_1 %>
+      </div>
+      <div class="field">
+        <%= f.label :satis_people_2 %><br>
+        <%= f.number_field :satis_people_2 %>
+      </div>
+      <div class="field">
+        <%= f.label :satis_people_3 %><br>
+        <%= f.number_field :satis_people_3 %>
+      </div>
+      <div class="field">
+        <%= f.label :satis_people_4 %><br>
+        <%= f.number_field :satis_people_4 %>
+      </div>
+      <div class="field">
+        <%= f.label :satis_work_1 %><br>
+        <%= f.number_field :satis_work_1 %>
+      </div>
+      <div class="field">
+        <%= f.label :satis_work_2 %><br>
+        <%= f.number_field :satis_work_2 %>
+      </div>
+      <div class="field">
+        <%= f.label :satis_work_4 %><br>
+        <%= f.number_field :satis_work_3 %>
+      </div>
+      <div class="field">
+        <%= f.label :satis_work_4 %><br>
+        <%= f.number_field :satis_work_4 %>
+      </div>
+
+
+      <div class="field">
+        <%= f.label :satis_shop %><br>
+        <%= f.number_field :satis_shop%>
+      </div>
+
+      <div class="field">
+        <%= f.label :satis_services %><br>
+        <%= f.number_field :satis_services%>
+      </div>
+
+      <div class="field">
+        <%= f.label :satis_trafic %><br>
+        <%= f.number_field :satis_trafic%>
+      </div>
+
+      <div class="field">
+        <%= f.label :satis_env %><br>
+        <%= f.number_field :satis_env%>
+      </div>
+
+      <div class="field">
+        <%= f.label :satis_freight %><br>
+        <%= f.number_field :satis_freight%>
+      </div>
+
+
+      <%=link_to 'بازگشت' ,student_projects_path,class:'ui  button '%>
+      <%= f.submit 'تایید' ,:class=> 'ui green button '%>
+
+  <% end %>
+
+</div>

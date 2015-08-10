@@ -38,6 +38,10 @@
           <i class="plus icon"></i>
           افزودن مدال
       <% end %>
+      <%= link_to upload_path ,:class => 'item' do %>
+          <i class="upload icon"></i>
+          بروز رسانی
+      <% end %>
       <%= link_to destroy_admin_session_path ,:method => 'delete',:class => 'item' do %>
           <i class="sign out icon"></i>
           خروج

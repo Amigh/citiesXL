@@ -1,17 +1,23 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [:add_medal,:remove_medal,:show, :edit, :update, :destroy]
-  before_action :authenticate_admin! , only: [:new,:create,:add_medal,:remove_medal,:edit,:update,:destroy,:import]
+  before_action :authenticate_admin! , only: [:new,:create,:add_medal,:remove_medal,:edit,:update,:destroy,:import,:export]
   # GET /students
   # GET /students.json
   def index
-    @students = Student.all
-    #todo
-    # @students = Student.where(:class_name=> sort_class,:year=>sort_year).all
+    @year = sort_year
+    @class_name = sort_class
+    @students = Student.where(:year=> sort_year , :class_name => sort_class).all
+  end
+
+  def export
+    Student.export(params[:year])
+    send_file "public/student.xls",:filename=> 'student.xls', :type =>  "application/vnd.ms-excel"
   end
 
   def import
+
     Student.import(params[:file])
-    redirect_to students_path, notice: "Students imported."
+    redirect_to students_path
   end
 
   def add_medal
