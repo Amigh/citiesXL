@@ -13,53 +13,57 @@
     </p>
   </div>
 </div>
-
-<table class="ui celled green attached striped table" >
-  <thead>
-  <tr>
-    <th></th>
-    <th>درآمد زایی</th>
-    <th>درآمد کل</th>
-    <th>پول کل</th>
-    <th>جمعیت کل</th>
-    <th>ردیف</th>
-  </tr>
-  </thead>
-
-  <tbody>
-  <% @projects.each do |project| %>
+<% unless @projects.empty? %>
+    <table class="ui celled green attached striped table" >
+      <thead>
       <tr>
-        <!--<td></td>-->
-        <td>
-          <div class="ui icon buttons">
-            <% if admin_signed_in? %>
-                <%= link_to  student_project_path(project.student,project) ,:class => 'ui button' do%>
-                    <i class="bar chart icon"></i>
-                <% end %>
-                <%= link_to  edit_student_project_path(project.student,project),:class => "ui  button" do%>
-                    <i class="edit icon"></i>
-                <% end %>
-                <%= link_to  student_project_path(project.student,project), method: :delete, data: { confirm: 'Are you sure?' } ,:class => "ui red button" do%>
-                    <i class="trash icon"></i>
-                <% end %>
-            <% else %>
-                <%= link_to  student_project_path(project.student,project) ,:class => 'ui labeled icon button' do%>
-                    <i class="bar chart green  icon"></i>
-                    مشاهده
-                <% end %>
-            <% end %>
-          </div>
-        </td>
-        <td><%= project.cash_flow %></td>
-        <td><%= project.income %></td>
-        <td><%= project.money %></td>
-        <td><%= project.population %></td>
-        <td><%=  @counter+=1 %></td>
+        <th></th>
+        <th>درآمد زایی</th>
+        <th>درآمد کل</th>
+        <th>پول کل</th>
+        <th>جمعیت کل</th>
+        <th>ردیف</th>
       </tr>
-  <% end %>
-  </tbody>
-</table>
+      </thead>
 
+      <tbody>
+      <% @projects.each do |project| %>
+          <tr>
+            <!--<td></td>-->
+            <td>
+              <div class="ui icon buttons">
+                <% if admin_signed_in? %>
+                    <%= link_to  student_project_path(project.student,project) ,:class => 'ui button' do%>
+                        <i class="bar chart icon"></i>
+                    <% end %>
+                    <%= link_to  edit_student_project_path(project.student,project),:class => "ui  button" do%>
+                        <i class="edit icon"></i>
+                    <% end %>
+                    <%= link_to  student_project_path(project.student,project), method: :delete, data: { confirm: 'Are you sure?' } ,:class => "ui red button" do%>
+                        <i class="trash icon"></i>
+                    <% end %>
+                <% else %>
+                    <%= link_to  student_project_path(project.student,project) ,:class => 'ui labeled icon button' do%>
+                        <i class="bar chart green  icon"></i>
+                        مشاهده
+                    <% end %>
+                <% end %>
+              </div>
+            </td>
+            <td><%= project.cash_flow %></td>
+            <td><%= project.income %></td>
+            <td><%= project.money %></td>
+            <td><%= project.population %></td>
+            <td><%=  @counter+=1 %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <% else %>
+    <div class="ui warning message">
+      پروژه ای ثبت نشده است
+    </div>
+<%end%>
 <% if admin_signed_in? %>
     <%= link_to 'پروژه جدید', new_student_project_path ,:class => 'ui green button bottom attached'%>
 <% end %>

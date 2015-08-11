@@ -1,13 +1,10 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_admin! , only: [:new,:create,:edit,:update,:destroy,:import]
+  before_action :authenticate_admin! , only: [:new,:create,:edit,:update,:destroy,:import,:export]
   # after_action only: [:update,:create]
   # GET /projects
   # GET /projects.json
   def import
-    puts '#####'
-    puts params[:file]
-    puts '#####'
     Project.import(params[:file])
     redirect_to students_path, notice: "Projects imported."
   end
