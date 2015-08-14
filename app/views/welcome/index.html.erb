@@ -1,42 +1,45 @@
+<div class=" ui green card fluid">
+  <div class="content">
+    <div class="header">
+      کلاس شهرسازی سوم دبستان
+    </div>
 
-    <div class=" ui green card fluid">
-      <div class="content">
-        <div class="header">
-          کلاس شهرسازی سوم دبستان
-        </div>
-
-      </div>
-      <div class="image">
-        <%= image_tag('10955.jpg') %>
-      </div>
-      <div class="content">
-        <div class="description">
-          کلاس شهرسازی سوم بسیار فلان است که خیلی بهمان بود ما فلانترش کردیم اما باید بیشتر فلان شود که چرا نشده تا حالا فقط بهمان میداند.
-          کلاس شهرسازی سوم بسیار فلان است که خیلی بهمان بود ما فلانترش کردیم اما باید بیشتر فلان شود که چرا نشده تا حالا فقط بهمان میداند.
-          کلاس شهرسازی سوم بسیار فلان است که خیلی بهمان بود ما فلانترش کردیم اما باید بیشتر فلان شود که چرا نشده تا حالا فقط بهمان میداند.
-          کلاس شهرسازی سوم بسیار فلان است که خیلی بهمان بود ما فلانترش کردیم اما باید بیشتر فلان شود که چرا نشده تا حالا فقط بهمان میداند.
-          کلاس شهرسازی سوم بسیار فلان است که خیلی بهمان بود ما فلانترش کردیم اما باید بیشتر فلان شود که چرا نشده تا حالا فقط بهمان میداند.
-        </div>
-      </div>
-      <div class="extra content">
+  </div>
+  <div class="image">
+    <%= image_tag('10955.jpg') %>
+  </div>
+  <div class="content">
+    <div class="description">
+      کلاس شهرسازی سوم بسیار فلان است که خیلی بهمان بود ما فلانترش کردیم اما باید بیشتر فلان شود که چرا نشده تا حالا فقط بهمان میداند.
+      کلاس شهرسازی سوم بسیار فلان است که خیلی بهمان بود ما فلانترش کردیم اما باید بیشتر فلان شود که چرا نشده تا حالا فقط بهمان میداند.
+      کلاس شهرسازی سوم بسیار فلان است که خیلی بهمان بود ما فلانترش کردیم اما باید بیشتر فلان شود که چرا نشده تا حالا فقط بهمان میداند.
+      کلاس شهرسازی سوم بسیار فلان است که خیلی بهمان بود ما فلانترش کردیم اما باید بیشتر فلان شود که چرا نشده تا حالا فقط بهمان میداند.
+      کلاس شهرسازی سوم بسیار فلان است که خیلی بهمان بود ما فلانترش کردیم اما باید بیشتر فلان شود که چرا نشده تا حالا فقط بهمان میداند.
+    </div>
+  </div>
+  <div class="extra content">
       <span class=" floated">
         تابستان 1394
       </span>
-      </div>
-    </div>
+  </div>
+</div>
 
-    <div class="ui segments">
-      <div class="ui  segment">
-        <div class="ui header">
-          برترین ها
-        </div>
-      </div>
-      <div class="ui green secondary segment">
-        <div class="ui three link cards">
-          <% @students.each do |student| %>
-              <%= render 'students/student_card', :student => student %>
-          <% end %>
 
-        </div>
-      </div>
+<!--<a class="launch icon item">-->
+  <!--<i class="content icon"></i>-->
+<!--</a>-->
+<div class="ui segments">
+  <div class="ui  segment">
+    <div class="ui header">
+      برترین ها
     </div>
+  </div>
+  <div class="ui green secondary segment">
+    <div class="ui three link cards">
+      <% @students.each do |student| %>
+          <%= render 'students/student_card', :student => student %>
+      <% end %>
+
+    </div>
+  </div>
+</div>
