@@ -91,7 +91,7 @@ class StudentsController < ApplicationController
   private
 
   def sort_year
-    params[:year] || "1392-1393"
+    params[:year] || "1393-1394"
   end
 
   def sort_class

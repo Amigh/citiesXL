@@ -4,7 +4,7 @@
 
     <%= form_tag ({:controller =>'students',:action=>'index'}) ,{:class => 'ui form',:multipart => true,:method => 'get'} do%>
         <div class="ui segment attached" style="text-align: left">
-          <%= select_tag(:year, options_for_select([['1392-1393'], ['1393-1394'], ['1394-1395']], selected: :year),
+          <%= select_tag(:year, options_for_select([['1393-1394'], ['1394-1395']], selected: :year),
                          :class =>'ui selection  fluid dropdown') %>
 
 
