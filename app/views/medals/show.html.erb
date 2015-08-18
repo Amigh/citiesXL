@@ -1,10 +1,7 @@
-<div class="ui segments">
-  <div class="ui segment">
-    <div class="ui header">
-      توضیحات
-    </div>
-    <div class="ui right rail ">
-      <div class=" ui card "  style="text-align: center">
+<div class="ui sixteen wide mobile twelve wide tablet twelve wide computer column ">
+  <div class="ui stackable centered grid">
+    <div class="ui six wide computer  sixteen wide mobile twelve wide tablet  column">
+      <div class=" ui card "  style="text-align: center;margin: 0 auto">
         <div class="ui content ">
           <%= image_tag @medal.image ,:class => 'centered rounded'%>
         </div>
@@ -25,9 +22,17 @@
         </div>
       </div>
     </div>
-  </div>
-
-  <div class="ui green  secondary segment">
-    <%= @medal.description %>
+    <div class="ui ten wide computer sixteen wide mobile twelve wide tablet  column">
+      <div class="ui segments">
+        <div class="ui segment">
+          <div class="ui header">
+            توضیحات
+          </div>
+        </div>
+        <div class="ui green  secondary segment">
+          <%= @medal.description %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

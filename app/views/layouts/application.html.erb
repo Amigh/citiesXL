@@ -7,7 +7,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="ui left  visible vertical inverted sidebar labeled icon menu">
+
+
+<!--<div class="burger">-->
+  <!--<div class="ui icon button ">-->
+    <!--<i class="ui block layout icon"></i>-->
+  <!--</div>-->
+<!--</div>-->
+
+<div class="ui left visible vertical inverted sidebar labeled icon menu">
   <%= link_to root_path ,:class => 'item' do %>
       <i class="home icon"></i>
       خانه
@@ -23,7 +31,7 @@
   <!--<%= link_to '#',:class => 'item' do %>-->
       <!--<i class="travel icon"></i>-->
       <!--معلمین-->
-  <!--<% end %>-->
+      <!--<% end %>-->
   <% unless admin_signed_in? %>
       <%= link_to new_admin_session_path ,:class => 'item' do %>
           <i class="sign in icon"></i>
@@ -49,11 +57,8 @@
 
   <% end %>
 </div>
-
-<div class="ui grid container stackable centered">
-  <div class="eight wide column">
-    <%= yield %>
-  </div>
+<div class="ui grid container stackable centered ">
+  <%= yield %>
 </div>
 </body>
 </html>

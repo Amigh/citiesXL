@@ -1,32 +1,34 @@
-<div class="ui fluid green card">
-  <div class="content">
-    <div class="header">
-      لیست تمام مدال ها
+<div class="ui sixteen wide mobile twelve wide tablet eight wide computer column">
+  <div class="ui fluid green card">
+    <div class="content">
+      <div class="header">
+        لیست تمام مدال ها
+      </div>
+    </div>
+
+    <div class="content">
+      <p>
+        در این صفحه شما می توانید لیست تمامی مدال های موجود در کلاس شهرسازی را ببینید و از شرایط کسب و امتیاز هر مدال آگاهی پیدا کنید
+      </p>
     </div>
   </div>
-
-  <div class="content">
-    <p>
-      در این صفحه شما می توانید لیست تمامی مدال های موجود در کلاس شهرسازی را ببینید و از شرایط کسب و امتیاز هر مدال آگاهی پیدا کنید
-    </p>
+  <div class="ui three cards link">
+    <% @medals.each do |medal| %>
+        <%= render 'medal_card', :medal => medal %>
+    <% end %>
   </div>
-</div>
-<div class="ui three cards link">
-  <% @medals.each do |medal| %>
-      <%= render 'medal_card', :medal => medal %>
+  <!--<td>< %= link_to 'Show', medal %></td>-->
+  <!--<td>< %= link_to 'Edit', edit_medal_path(medal) %></td>-->
+  <!--<td>< %= link_to 'Destroy', medal, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+  <br>
+  <% if admin_signed_in? %>
+      <script type="text/javascript">
+          $(document).ready(function() {
+              $('.special.card .image').dimmer({
+                  on: 'hover'
+              });
+          });
+      </script>
   <% end %>
+  <!--< %= link_to 'New Medal', new_medal_path %>-->
 </div>
-<!--<td>< %= link_to 'Show', medal %></td>-->
-<!--<td>< %= link_to 'Edit', edit_medal_path(medal) %></td>-->
-<!--<td>< %= link_to 'Destroy', medal, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
-<br>
-<% if admin_signed_in? %>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('.special.card .image').dimmer({
-                on: 'hover'
-            });
-        });
-    </script>
-<% end %>
-<!--< %= link_to 'New Medal', new_medal_path %>-->

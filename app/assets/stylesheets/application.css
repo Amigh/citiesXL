@@ -39,12 +39,10 @@ body{
     filter: alpha(opacity=40); /* msie */
     /*background-color: #000;*/
 }
-@media only screen and (min-width: 320px) and (max-width: 767px) {
-    .mob{
-        background-color: red;
-        width: 100%;
-        height: 200px;
-    }
+
+.burger{
+    width: 30px;
+    height: auto;
 }
 
 /*.disable  {*/

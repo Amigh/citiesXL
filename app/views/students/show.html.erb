@@ -1,9 +1,8 @@
-<div class="ui segments">
-  <div class="ui segment">
-    <div class="ui right rail">
+<div class="ui sixteen wide mobile twelve wide tablet twelve wide computer column ">
+  <div class="ui stackable centered grid">
 
-      <div class=" ui  card">
-
+    <div class="ui six wide computer  sixteen wide mobile twelve wide tablet  column">
+      <div class=" ui  card" style="margin: 0 auto">
         <div class="ui image ">
           <%= image_tag @student.avatar %>
         </div>
@@ -33,35 +32,39 @@
             پروژه ها
         <% end %>
       </div>
-
-
-
     </div>
-    <div class="ui header">
-      مدال ها
-    </div>
-  </div>
-  <div class="ui green secondary segment" id="stickseg">
-    <div class="ui horizontal divider ">
-لیست مدال هایی که شما کسب کرده اید
-    </div>
-    <% if @medals.count == 0 %>
-        <div class="ui message warning">
-          متاسفانه شما هیچ مدالی ندارید
+
+    <div class="ui ten wide computer  sixteen wide mobile twelve wide tablet column">
+      <div class="ui segments">
+        <div class="ui segment">
+          <div class="ui header">
+            مدال ها
+          </div>
         </div>
-        <% end %>
-    <div class="ui three link cards">
-      <% @medals.each do |medal| %>
-          <%= render 'medals/medal_card_add_medal' , :medal => medal ,:student =>@student%>
-      <% end %>
-    </div>
-    <div class="ui horizontal divider ">
-      مدال هایی که باید کسب کنید
-    </div>
-    <div class="ui three link cards disable">
-      <% @not_mine_medals.each do |medal| %>
-          <%= render 'medals/medal_card_add_medal' , :medal => medal ,:student =>@student%>
-      <% end %>
+        <div class="ui green secondary segment">
+          <div class="ui horizontal divider ">
+            لیست مدال هایی که شما کسب کرده اید
+          </div>
+          <% if @medals.count == 0 %>
+              <div class="ui message warning">
+                متاسفانه شما هیچ مدالی ندارید
+              </div>
+          <% end %>
+          <div class="ui three link cards">
+            <% @medals.each do |medal| %>
+                <%= render 'medals/medal_card_add_medal' , :medal => medal ,:student =>@student%>
+            <% end %>
+          </div>
+          <div class="ui horizontal divider ">
+            مدال هایی که باید کسب کنید
+          </div>
+          <div class="ui three link cards disable">
+            <% @not_mine_medals.each do |medal| %>
+                <%= render 'medals/medal_card_add_medal' , :medal => medal ,:student =>@student%>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

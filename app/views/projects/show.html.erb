@@ -1,86 +1,88 @@
-<div class="ui green attached segment">
-  <div class="ui horizontal divider"> اطلاعات کلی </div>
-  <p>
-    <strong>جمعیت:</strong>
-    <%= @project.population %>
-  </p>
+<div class="ui sixteen wide mobile twelve wide tablet eight wide computer column ">
+  <div class="ui green attached segment">
+    <div class="ui horizontal divider"> اطلاعات کلی </div>
+    <p>
+      <strong>جمعیت:</strong>
+      <%= @project.population %>
+    </p>
 
-  <p>
-    <strong>درآمدزایی کل :</strong>
-    <%= @project.cash_flow %>
-  </p>
+    <p>
+      <strong>درآمدزایی کل :</strong>
+      <%= @project.cash_flow %>
+    </p>
 
-  <p>
-    <strong>درآمد کل:</strong>
-    <%= @project.income %>
-  </p>
+    <p>
+      <strong>درآمد کل:</strong>
+      <%= @project.income %>
+    </p>
 
-  <p>
-    <strong>پول کل:</strong>
-    <%= @project.money %>
-  </p>
-  <div class="ui horizontal divider"> رضایت انواع مردم </div>
-  <p>
-    <strong>رضایت مردم نوع یک:</strong>
-    <%= @project.satis_people_1 %>
-  </p>
+    <p>
+      <strong>پول کل:</strong>
+      <%= @project.money %>
+    </p>
+    <div class="ui horizontal divider"> رضایت انواع مردم </div>
+    <p>
+      <strong>رضایت مردم نوع یک:</strong>
+      <%= @project.satis_people_1 %>
+    </p>
 
-  <p>
-    <strong>رضایت مردم نوع دو:</strong>
-    <%= @project.satis_people_2 %>
-  </p>
-  <p>
-    <strong>رضایت مردم نوع سه:</strong>
-    <%= @project.satis_people_3 %>
-  </p>
-  <p>
-    <strong>رضایت کار نوع چهار:</strong>
-    <%= @project.satis_work_4 %>
-  </p>
-  <div class="ui horizontal divider"> رضایت از کار</div>
-  <p>
-    <strong>رضایت کار نوع یک:</strong>
-    <%= @project.satis_work_1 %>
-  </p>
+    <p>
+      <strong>رضایت مردم نوع دو:</strong>
+      <%= @project.satis_people_2 %>
+    </p>
+    <p>
+      <strong>رضایت مردم نوع سه:</strong>
+      <%= @project.satis_people_3 %>
+    </p>
+    <p>
+      <strong>رضایت کار نوع چهار:</strong>
+      <%= @project.satis_work_4 %>
+    </p>
+    <div class="ui horizontal divider"> رضایت از کار</div>
+    <p>
+      <strong>رضایت کار نوع یک:</strong>
+      <%= @project.satis_work_1 %>
+    </p>
 
-  <p>
-    <strong>رضایت کار نوع دو:</strong>
-    <%= @project.satis_work_2 %>
-  </p>
-  <p>
-    <strong>رضایت کار نوع سه:</strong>
-    <%= @project.satis_work_3 %>
-  </p>
-  <p>
-    <strong>رضایت کار نوع چهار:</strong>
-    <%= @project.satis_work_4 %>
-  </p>
-  <div class="ui horizontal divider">سایر</div>
-  <p>
-    <strong>رضایت از مناطق تجاری:</strong>
-    <%= @project.satis_work_1 %>
-  </p>
+    <p>
+      <strong>رضایت کار نوع دو:</strong>
+      <%= @project.satis_work_2 %>
+    </p>
+    <p>
+      <strong>رضایت کار نوع سه:</strong>
+      <%= @project.satis_work_3 %>
+    </p>
+    <p>
+      <strong>رضایت کار نوع چهار:</strong>
+      <%= @project.satis_work_4 %>
+    </p>
+    <div class="ui horizontal divider">سایر</div>
+    <p>
+      <strong>رضایت از مناطق تجاری:</strong>
+      <%= @project.satis_work_1 %>
+    </p>
 
-  <p>
-    <strong>رضایت از خدمات شهری:</strong>
-    <%= @project.satis_services %>
-  </p>
-  <p>
-    <strong>رضایت از ترافیک:</strong>
-    <%= @project.satis_trafic %>
-  </p>
-  <p>
-    <strong>رضایت از محیط زیست:</strong>
-    <%= @project.satis_env %>
-  </p>
-  <p>
-    <strong>رضایت از حمل و نقل:</strong>
-    <%= @project.satis_freight %>
-  </p>
-</div>
-<div class="ui two bottom attached buttons">
-  <% if admin_signed_in? %>
-      <%= link_to 'ویرایش', edit_student_project_path(@project.student,@project),:class => 'ui green button' %>
-  <% end %>
-  <%= link_to 'بازگشت', student_projects_path ,:class => 'ui button'%>
+    <p>
+      <strong>رضایت از خدمات شهری:</strong>
+      <%= @project.satis_services %>
+    </p>
+    <p>
+      <strong>رضایت از ترافیک:</strong>
+      <%= @project.satis_trafic %>
+    </p>
+    <p>
+      <strong>رضایت از محیط زیست:</strong>
+      <%= @project.satis_env %>
+    </p>
+    <p>
+      <strong>رضایت از حمل و نقل:</strong>
+      <%= @project.satis_freight %>
+    </p>
+  </div>
+  <div class="ui two bottom attached buttons">
+    <% if admin_signed_in? %>
+        <%= link_to 'ویرایش', edit_student_project_path(@project.student,@project),:class => 'ui green button' %>
+    <% end %>
+    <%= link_to 'بازگشت', student_projects_path ,:class => 'ui button'%>
+  </div>
 </div>
