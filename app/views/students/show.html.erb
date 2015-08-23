@@ -50,7 +50,7 @@
         <% end %>
         <div class="ui three link cards">
           <% @medals.each do |medal| %>
-              <%= render 'medals/medal_card' , :medal => medal ,:student =>@student%>
+              <%= render 'medals/medal_card_add_medal' , :medal => medal ,:student =>@student%>
           <% end %>
         </div>
         <div class="ui horizontal divider ">
@@ -58,13 +58,13 @@
         </div>
         <div class="ui three link cards disable">
           <% @not_mine_medals.each do |medal| %>
-              <%= render 'medals/medal_card' , :medal => medal ,:student =>@student%>
+              <%= render 'medals/medal_card_add_medal' , :medal => medal ,:student =>@student%>
           <% end %>
         </div>
       </div>
     </div>
+    <%= link_to 'بازگشت',_back_url ,:class => 'ui button'%>
   </div>
-  <%= link_to 'بازگشت',_back_url ,:class => 'ui button'%>
 </div>
 
 
