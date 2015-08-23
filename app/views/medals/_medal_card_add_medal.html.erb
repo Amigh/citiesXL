@@ -6,21 +6,20 @@
       <div class="content">
         <div class="ui center">
           <% if admin_signed_in? %>
-              <div class="ui vertical labeled icon buttons" >
                 <% if student.medalizations.where(:student_id => student.id , :medal_id => medal.id).blank? %>
-                    <%= link_to add_medal_path(:id => student.id, :m_id => medal.id),:method =>'POST' ,:class => "ui green button" do %>
+                    <%= link_to add_medal_path(:id => student.id, :m_id => medal.id),:method =>'POST' ,:class => "ui green labeled icon  button" do %>
                         <i class="checkmark icon"></i>
                         اعطا
                     <% end %>
                 <%else%>
-                    <%= link_to  remove_medal_path(:id => student.id,:m_id => medal.id) ,method: :delete ,:class => "ui orange button" do%>
+                    <%= link_to  remove_medal_path(:id => student.id,:m_id => medal.id) ,method: :delete ,:class => "ui orange labeled icon  button" do%>
                         <i class="remove icon"></i>
                         پس گرفتن
                     <% end %>
                 <% end %>
               </div>
           <% end %>
-        </div>
+ 
       </div>
     </div>
     <%= image_tag medal.image %>

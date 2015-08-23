@@ -1,7 +1,6 @@
-<div class="ui sixteen wide mobile twelve wide tablet twelve wide computer column ">
-  <div class="ui stackable centered grid">
 
-    <div class="ui six wide computer sixteen wide mobile twelve wide tablet column">
+  <div class="ui stackable centered grid">
+    <div class="ui four wide computer sixteen wide mobile twelve wide tablet column">
       <%= form_tag ({:controller =>'students',:action=>'index'}) ,{:class => 'ui form fluid',:multipart => true,:method => 'get'} do%>
           <div class="ui segment attached" style="text-align: left">
             <%= select_tag(:year, options_for_select([['1393-1394'], ['1394-1395']], selected: params[:year]),
@@ -28,7 +27,7 @@
       <% end %>
     </div>
 
-    <div class="ui ten wide computer sixteen wide mobile twelve wide tablet column">
+    <div class="ui eight wide computer sixteen wide mobile twelve wide tablet column">
       <div class="ui fluid green card">
         <div class="content">
           <div class="header">
@@ -60,7 +59,6 @@
     </div>
 
   </div>
-</div>
 <script>
     $(document).ready(function(){
         $('.ui.dropdown')
