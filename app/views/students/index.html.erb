@@ -4,18 +4,18 @@
     <div class="ui six wide computer sixteen wide mobile twelve wide tablet column">
       <%= form_tag ({:controller =>'students',:action=>'index'}) ,{:class => 'ui form fluid',:multipart => true,:method => 'get'} do%>
           <div class="ui segment attached" style="text-align: left">
-            <%= select_tag(:year, options_for_select([['1393-1394'], ['1394-1395']], selected: :year),
+            <%= select_tag(:year, options_for_select([['1393-1394'], ['1394-1395']], selected: params[:year]),
                            :class =>'ui selection  fluid dropdown') %>
             <div class="grouped fields" style="text-align: right">
               <div class="field">
                 <div class="ui slider checkbox">
-                  <%= radio_button_tag :class_name ,'الف' ,true%>
+                  <%= radio_button_tag :class_name ,'الف' ,params[:class_name] == 'الف'%>
                   <label>کلاس الف</label>
                 </div>
               </div>
               <div class="field">
                 <div class="ui slider checkbox">
-                  <%= radio_button_tag :class_name ,'ب' ,false%>
+                  <%= radio_button_tag :class_name ,'ب' ,params[:class_name] == 'ب'%>
                   <label>کلاس ب</label>
                 </div>
               </div>

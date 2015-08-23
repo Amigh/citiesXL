@@ -274,7 +274,6 @@ def grade
 
   # POPULATION
   if self.population >= Project::MEDAL_POPULATION_GOLD_LIMIT
-    puts @medal_population_gold.id
     add_medal(@student,@medal_population_gold)
   end
   if  self.population >= Project::MEDAL_POPULATION_SILVER_LIMIT

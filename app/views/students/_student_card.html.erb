@@ -26,7 +26,9 @@
   </div>
   <div class="ui content">
     <div class="ui header">
-      <%= student.first_name + ' '+student.last_name %>
+      <%= link_to student do%>
+          <%= student.first_name + ' '+student.last_name %>
+      <% end %>
     </div>
   </div>
   <div class="content">
