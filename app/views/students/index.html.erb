@@ -9,13 +9,13 @@
             <div class="grouped fields" style="text-align: right">
               <div class="field">
                 <div class="ui slider checkbox">
-                  <%= radio_button_tag :class_name ,'الف' ,params[:class_name] == 'الف'%>
+                  <%= radio_button_tag :class_name ,'الف' ,@class_name == 'الف'  %>
                   <label>کلاس الف</label>
                 </div>
               </div>
               <div class="field">
                 <div class="ui slider checkbox">
-                  <%= radio_button_tag :class_name ,'ب' ,params[:class_name] == 'ب'%>
+                  <%= radio_button_tag :class_name ,'ب' ,@class_name  == 'ب'%>
                   <label>کلاس ب</label>
                 </div>
               </div>
