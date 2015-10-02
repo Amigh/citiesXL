@@ -37,6 +37,7 @@ class StudentsController < ApplicationController
   def show
     @medals = @student.medals
     @not_mine_medals = Medal.all - @medals
+    @latest_medals = Medal.joins(:medalizations).where(:medalizations => {:student_id=> @student.id}).limit(3).order("medalizations.created_at DESC")
   end
 
   # GET /students/new
@@ -91,7 +92,7 @@ class StudentsController < ApplicationController
   private
 
   def sort_year
-    params[:year] || "1393-1394"
+    params[:year] || "1394-1395"
   end
 
   def sort_class

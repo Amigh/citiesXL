@@ -1,8 +1,17 @@
 <div class="ui stackable centered grid" style="min-width: 100%;">
   <div class="ui four wide computer  sixteen wide mobile twelve wide tablet  column">
+
+    <div class="ui top green attached progress">
+      <div style="width:<%=@student.score/10  %>%" class="bar"></div>
+    </div>
+
     <div class=" ui  card" style="margin: 0 auto">
       <div class="ui image ">
+        <% if @student.avatar.filename == nil %>
+        <%= image_tag ('user_placeholder.png') %>
+        <%else%>
         <%= image_tag @student.avatar %>
+        <% end %>
       </div>
       <div class="ui content">
         <div class="ui header">
@@ -21,14 +30,37 @@
         </div>
       </div>
       <div class="ui extra content">
-      <span class="ui  floated">
-        <%= 'امتیاز: ' + @student.score.to_s  %>
-      </span>
+        <div  class="ui green progress">
+          <div style="width:<%=@student.score/10  %>%" class="bar">
+            <%=@student.score.to_s  %>
+          </div>
+          <div class="label" style="direction :rtl">
+            <%=  @student.score.to_s + 'امتیاز ' %>
+            <i class="diamond icon"></i>
+          </div>
+        </div>
+
       </div>
       <%= link_to student_projects_path(@student),:class => "ui green labeled icon bottom attached button" do%>
-          <i class="tasks icon"></i>
-          پروژه ها
+      <i class="tasks icon"></i>
+      پروژه ها
       <% end %>
+    </div>
+    <div class=" ui  card" >
+      <div class="ui green  label top attached" style="text-align:center;">
+        اخرین مدال های کسب شده
+      </div>
+      <div class="content">
+        <% @latest_medals.each do |medal| %>
+        <div class="item">
+          <%= link_to medal do%>
+          <%= 'مدال'+' '+ medal.per_type_name + ' '+ medal.display_name %> 
+
+          <% end %> 
+        </div>
+        <% end %>
+      </div>
+
     </div>
   </div>
 
@@ -43,14 +75,16 @@
         <div class="ui horizontal divider ">
           لیست مدال هایی که شما کسب کرده اید
         </div>
+
         <% if @medals.count == 0 %>
-            <div class="ui message warning">
-              متاسفانه شما هیچ مدالی ندارید
-            </div>
+        <div class="ui message warning">
+          متاسفانه شما هیچ مدالی ندارید
+        </div>
         <% end %>
+        <br>
         <div class="ui three link cards">
           <% @medals.each do |medal| %>
-              <%= render 'medals/medal_card_add_medal' , :medal => medal ,:student =>@student%>
+          <%= render 'medals/medal_card_add_medal' , :medal => medal ,:student =>@student%>
           <% end %>
         </div>
         <div class="ui horizontal divider ">
@@ -58,7 +92,7 @@
         </div>
         <div class="ui three link cards disable">
           <% @not_mine_medals.each do |medal| %>
-              <%= render 'medals/medal_card_add_medal' , :medal => medal ,:student =>@student%>
+          <%= render 'medals/medal_card_add_medal' , :medal => medal ,:student =>@student%>
           <% end %>
         </div>
       </div>
@@ -68,3 +102,9 @@
 </div>
 
 
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#pr').progress();
+  });
+  
+</script>

@@ -1,4 +1,7 @@
 <div class=" ui link special card">
+<div class="ui top green attached progress">
+  <div style="width:<%=student.score/10  %>%" class="bar"></div>
+</div>
   <div class="blurring dimmable image">
     <div class="ui dimmer">
       <div class="content">
@@ -18,7 +21,7 @@
         </div>
       </div>
     </div>
-    <% if student.avatar.nil? %>
+    <% if student.avatar.filename == nil %>
         <%= image_tag ('user_placeholder.png') %>
     <%else%>
         <%= image_tag student.avatar %>

@@ -1,69 +1,71 @@
 
-  <div class="ui stackable centered grid">
-    <div class="ui four wide computer sixteen wide mobile twelve wide tablet column">
-      <%= form_tag ({:controller =>'students',:action=>'index'}) ,{:class => 'ui form fluid',:multipart => true,:method => 'get'} do%>
-          <div class="ui segment attached" style="text-align: left">
-            <%= select_tag(:year, options_for_select([['1393-1394'], ['1394-1395']], selected: params[:year]),
-                           :class =>'ui selection  fluid dropdown') %>
-            <div class="grouped fields" style="text-align: right">
-              <div class="field">
-                <div class="ui slider checkbox">
-                  <%= radio_button_tag :class_name ,'الف' ,@class_name == 'الف'  %>
-                  <label>کلاس الف</label>
-                </div>
+<div class="ui stackable centered grid" style="min-width:100%;">
+  <div class="ui four wide computer sixteen wide mobile twelve wide tablet column">
+
+    <%= form_tag ({:controller =>'students',:action=>'index'}) ,{:class => 'ui form fluid',:multipart => true,:method => 'get'} do%>
+        <div class="ui segment attached" style="text-align: left">
+          <!--%= select_tag(:year, options_for_select([['1393-1394'], ['1394-1395']], selected: params[:year]),
+                         :class =>'ui selection  fluid dropdown') %-->
+          <div class="grouped fields" style="text-align: right">
+            <div class="field">
+              <div class="ui slider checkbox">
+                <%= radio_button_tag :class_name ,'الف' ,@class_name == 'الف'  %>
+                <label>کلاس الف</label>
               </div>
-              <div class="field">
-                <div class="ui slider checkbox">
-                  <%= radio_button_tag :class_name ,'ب' ,@class_name  == 'ب'%>
-                  <label>کلاس ب</label>
-                </div>
+            </div>
+            <div class="field">
+              <div class="ui slider checkbox">
+                <%= radio_button_tag :class_name ,'ب' ,@class_name  == 'ب'%>
+                <label>کلاس ب</label>
               </div>
             </div>
           </div>
-          <%= button_tag  type: 'submit',:class => 'ui green button fluid labeled icon  bottom attached' do %>
-              <i class="search icon"></i>
-              جستجو...
-          <% end %>
+        </div>
+        <%= button_tag  type: 'submit',:class => 'ui green button fluid labeled icon  bottom attached' do %>
+            <i class="search icon"></i>
+            جستجو...
+        <% end %>
+    <% end %>
+  </div>
+
+  <div class="ui eight wide computer sixteen wide mobile twelve wide tablet column">
+    <div class="ui fluid green card">
+      <div class="content">
+        <div class="header">
+          دانش آموزان
+        </div>
+      </div>
+      <div class="content">
+        <p style="direction:rtl;">
+    در این صفحه شما می توانید لیست تمام دانش آموزان را مشاهده کنید
+        </p>
+      </div>
+    </div>
+    <div class="ui warning message">
+      <div style="text-align: center;direction: rtl">
+        <i class="caret down icon"></i>
+        نمایش دانش آموزان سال
+        <%= @year %>
+        کلاس سوم
+        <%= @class_name %>
+        <i class="caret down icon"></i>
+      </div>
+    </div>
+    <div class="ui three link cards" id="list">
+      <% @students.each do |student| %>
+          <%= render 'students/student_card', :student => student %>
       <% end %>
     </div>
 
-    <div class="ui eight wide computer sixteen wide mobile twelve wide tablet column">
-      <div class="ui fluid green card">
-        <div class="content">
-          <div class="header">
-            دانش آموزان
-          </div>
-        </div>
-        <div class="content">
-          <p>
-            در این صفحه شما می توانید لیست تمام دانش آموزان را مشاهده کنید همچنین می توانید با استفاده از تنظیمات منو  سال تحصیل را نیز انتخاب کنید
-          </p>
-        </div>
-      </div>
-      <div class="ui warning message">
-        <div style="text-align: center;direction: rtl">
-          <i class="caret down icon"></i>
-          نمایش دانش آموزان سال
-          <%= @year %>
-          کلاس سوم
-          <%= @class_name %>
-          <i class="caret down icon"></i>
-        </div>
-      </div>
-      <div class="ui three link cards" id="cardlist">
-        <% @students.each do |student| %>
-            <%= render 'students/student_card', :student => student %>
-        <% end %>
-      </div>
-
-    </div>
-
   </div>
+
+</div>
 <script>
     $(document).ready(function(){
         $('.ui.dropdown')
                 .dropdown()
         ;
+
     });
     <% if admin_signed_in? %>
     $(document).ready(function() {
@@ -72,6 +74,7 @@
         });
     });
     <% end %>
+
 </script>
 <!--< %= link_to 'Show', student %>-->
 <!--< %= link_to 'Edit', edit_student_path(student) %>-->

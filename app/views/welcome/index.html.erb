@@ -29,6 +29,7 @@
   <!--<a class="launch icon item">-->
   <!--<i class="content icon"></i>-->
   <!--</a>-->
+  <% unless (@studentsA.first == nil or @studentsA.first.score == 0) and (@studentsB.first == nil or @studentsB.first.score == 0)%>
   <div class="ui segments">
     <div class="ui  segment">
       <div class="ui header">
@@ -37,11 +38,20 @@
     </div>
     <div class="ui green secondary segment">
       <div class="ui three link cards">
-        <% @students.each do |student| %>
-            <%= render 'students/student_card', :student => student %>
+        <div class="ui horizontal divider ">
+          کلاس الف
+        </div>
+        <% @studentsA.each do |student| %>
+        <%= render 'students/student_card', :student => student %>
         <% end %>
-
+        <div class="ui horizontal divider ">
+          کلاس ب
+        </div>
+        <% @studentsB.each do |student| %>
+        <%= render 'students/student_card', :student => student %>
+        <% end %>
       </div>
     </div>
   </div>
+  <% end %>
 </div>
