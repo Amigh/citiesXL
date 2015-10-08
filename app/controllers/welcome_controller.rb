@@ -1,8 +1,13 @@
 class WelcomeController < ApplicationController
   before_action :authenticate_admin! , only: [:upload]
   def index
-    @students = Student.limit(3).order('score DESC')
-    @background = rand(25).to_s + ".jpg"
+    @studentsA = Student.where(:class_name => 'الف').limit(3).order('score DESC')
+    @studentsB = Student.where(:class_name => 'ب').limit(3).order('score DESC')
+    @name = '0'
+    while @name == '0'
+    	@name = rand(25).to_s
+    end
+    @background =  @name + ".jpg"
   end
 
   def upload
