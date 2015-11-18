@@ -21,11 +21,11 @@
         </div>
       </div>
     </div>
-    <% if student.avatar.filename == nil %>
-        <%= image_tag ('user_placeholder.png') %>
-    <%else%>
+<% if student.avatar? %>
         <%= image_tag student.avatar %>
-    <% end %>
+<% else %>
+<%= image_tag ('user_placeholder.png')%>
+<% end %>
   </div>
   <div class="ui content">
     <div class="ui header">
