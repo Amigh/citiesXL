@@ -260,9 +260,9 @@ def grade
   @medal_sat_env_silver = Medal.find_by(:name =>'sat_env',:type_name =>'silver')
   @medal_sat_env_bronze = Medal.find_by(:name =>'sat_env',:type_name =>'bronze')
 
-  @medal_sat_serv_gold   = Medal.find_by(:name =>'sat_serv',:type_name =>'gold')
-  @medal_sat_serv_silver = Medal.find_by(:name =>'sat_serv',:type_name =>'silver')
-  @medal_sat_serv_bronze = Medal.find_by(:name =>'sat_serv',:type_name =>'bronze')
+  @medal_sat_services_gold   = Medal.find_by(:name =>'sat_serv',:type_name =>'gold')
+  @medal_sat_services_silver = Medal.find_by(:name =>'sat_serv',:type_name =>'silver')
+  @medal_sat_services_bronze = Medal.find_by(:name =>'sat_serv',:type_name =>'bronze')
 
   @medal_sat_trafic_gold   = Medal.find_by(:name =>'sat_trafic',:type_name =>'gold')
   @medal_sat_trafic_silver = Medal.find_by(:name =>'sat_trafic',:type_name =>'silver')
