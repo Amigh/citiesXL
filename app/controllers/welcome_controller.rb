@@ -1,6 +1,7 @@
 class WelcomeController < ApplicationController
   before_action :authenticate_admin! , only: [:upload]
   def index
+    @posts = Post.where(:show =>true).all
     @studentsA = Student.where(:class_name => 'الف').limit(3).order('score DESC')
     @studentsB = Student.where(:class_name => 'ب').limit(3).order('score DESC')
     @name = '0'

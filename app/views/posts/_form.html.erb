@@ -1,0 +1,58 @@
+<%= form_for(@post,:html => {:class => 'ui form'}) do |f| %>
+    <% if @post.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+          <ul>
+            <% @post.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <div class="field">
+      عنوان
+      <br>
+      <br>
+      <%= f.text_field :title ,:class =>'rtl' %>
+    </div>
+    <div class="field" style="direction: rtl">
+      <div class="ui slider checkbox">
+        <!--<%= f.check_box :show %>-->
+        <%= f.check_box :show %>
+        <label>نمایش</label>
+        <!--&lt;!&ndash;نمایش&ndash;&gt;-->
+      </div>
+    </div>
+    <div class="field">
+      متن
+      <br>
+      <br>
+      <%= f.text_area :content ,:class =>'rtl'%>
+    </div>
+    <div class="field">
+      <%= f.label :image %>
+      <label for='file' class='ui right labeled icon button'>
+        <i class="file icon"></i>
+        Browse ...
+      </label>
+      <%= f.file_field :image ,:style =>'display:none;' ,:id =>'file'%>
+    </div>
+    <%= f.submit 'تایید' ,:class => 'ui button green button' %>
+
+<% end %>
+<div class="hidden ui icon warning message " id="mes">
+  <i class=" file image outline icon"></i>
+  <div class="content">
+    <p id="namefile" ></p>
+  </div>
+</div>
+<script>
+
+    $('#file').change(function() {
+        var str;
+        str = $(this).val();
+        $('#namefile').text(str);
+        $('#mes').removeClass("hidden");
+    });
+</script>
