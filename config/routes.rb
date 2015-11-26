@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :tutorials
   resources :posts ,except: :show
   devise_for :admins
   resources :medals

@@ -25,8 +25,8 @@
         </div>
       </div>
       <div class="ui extra content">
-        <div  class="ui <%=csscolor(@student)%> progress">
-          <div style="width:<%=@student.score/10  %>%" class="bar">
+        <div  class="ui progress active ">
+          <div style="width:<%=@student.score/10  %>%;background-color: rgb(<%= 255 - (@student.score*255)/1000%>,<%=(@student.score*255)/1000%>,0)" class="bar">
             <%=@student.score.to_s  %>
           </div>
           <div class="label" style="direction :rtl">

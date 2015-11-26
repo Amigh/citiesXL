@@ -1,0 +1,15 @@
+<div class=" ui  card" style="margin: 0 auto">
+  <div class="ui content">
+    <div class="ui header">
+      <%= link_to tutorial.title ,tutorial_path(tutorial)%>
+    </div>
+  </div>
+  <div class="content">
+    <div class="ui meta">
+      <%= tutorial.description%>
+    </div>
+  </div>
+  <div class="ui extra content">
+    <%= tutorial.created_at.to_jalali.strftime("%A %d %B %Y")  %>
+  </div>
+</div>

@@ -27,7 +27,12 @@ body{
     background-color: #f5f5f5;
     margin-top: 70px;
     margin-right: 102px;
+    word-wrap: break-word;
 }
+.progress-wrapper {
+    display: none;
+}
+
 
 .disable img {
     opacity: 0.4;

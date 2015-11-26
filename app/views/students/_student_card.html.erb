@@ -1,6 +1,6 @@
 <div class=" ui link special card">
-<div class="ui top <%=csscolor(student)%> attached progress active">
-  <div style="width:<%=student.score/10 %>%;" class="bar"></div>
+<div class="ui top  attached progress active">
+  <div style="width:<%=student.score/10 %>%;background-color: rgb(<%= 255 - (student.score*255)/1000%>,<%=  (student.score*255)/1000%>,0);" class="bar"></div>
 </div>
   <div class="blurring dimmable image">
     <div class="ui dimmer">
