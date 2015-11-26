@@ -1,4 +1,7 @@
 <div class="ui sixteen wide mobile twelve wide tablet eight wide computer column">
+  <% if admin_signed_in? %>
+      <%= link_to 'مدال جدید', new_medal_path ,:class => 'ui button green button' %>
+  <% end %>
   <div class="ui fluid green card">
     <div class="content">
       <div class="header">
