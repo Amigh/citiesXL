@@ -8,12 +8,6 @@
 </head>
 <body>
 
-
-<!--<div class="burger">-->
-<!--<div class="ui icon button ">-->
-<!--<i class="ui block layout icon"></i>-->
-<!--</div>-->
-<!--</div>-->
 <div class="ui left visible vertical inverted sidebar labeled icon menu">
   <%= link_to root_path ,:class => 'item' do %>
       <i class="home icon"></i>
@@ -31,24 +25,12 @@
       <i class="video play  icon"></i>
       فیلم های آموزشی
   <% end %>
-  <!--<%= link_to '#',:class => 'item' do %>-->
-      <!--<i class="travel icon"></i>-->
-      <!--معلمین-->
-      <!--<% end %>-->
   <% unless admin_signed_in? %>
       <%= link_to new_admin_session_path ,:class => 'item' do %>
           <i class="sign in icon"></i>
           ورود
       <% end %>
   <% else %>
-      <%= link_to new_student_path,:class => 'item' do %>
-          <i class="plus icon"></i>
-          افزودن دانش آموز
-      <% end %>
-      <%= link_to new_medal_path ,:class => 'item' do %>
-          <i class="plus icon"></i>
-          افزودن مدال
-      <% end %>
       <%= link_to posts_path ,:class => 'item' do %>
           <i class="newspaper icon"></i>
           پست جدید

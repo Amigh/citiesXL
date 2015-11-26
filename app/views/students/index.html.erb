@@ -1,8 +1,10 @@
 
 <div class="ui stackable centered grid" style="min-width:100%;">
   <div class="ui four wide computer sixteen wide mobile twelve wide tablet column">
-
-    <%= form_tag ({:controller =>'students',:action=>'index'}) ,{:class => 'ui form fluid',:multipart => true,:method => 'get'} do%>
+  <% if admin_signed_in? %>
+      <%= link_to 'دانش آموز جدید', new_student_path ,:class => 'ui button green button' %>
+  <% end %>
+<%= form_tag ({:controller =>'students',:action=>'index'}) ,{:class => 'ui form fluid',:multipart => true,:method => 'get'} do%>
         <div class="ui segment attached" style="text-align: left">
           <!--%= select_tag(:year, options_for_select([['1393-1394'], ['1394-1395']], selected: params[:year]),
                          :class =>'ui selection  fluid dropdown') %-->
