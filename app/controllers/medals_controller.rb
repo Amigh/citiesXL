@@ -4,7 +4,8 @@ class MedalsController < ApplicationController
   # GET /medals
   # GET /medals.json
   def index
-    @medals = Medal.paginate(page: params[:page], per_page: 18).order(:position).all
+   @medals = Medal.paginate(page: params[:page], per_page: 18).order(:position).all
+#    @medals = Medal.order(:position).all
   end
 
   # GET /medals/1
