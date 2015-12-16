@@ -60,12 +60,30 @@ body{
     direction: rtl;
     text-align: right;
 }
+.sortable-placeholder {
+    border: 1px dashed #CCC;
+    background-color: #f9f9f9;
+    height: 317px;
+    width: calc(33.3333% - 2em);
+    margin-bottom: 12.25px;
+    margin-top: 12.25px;
+    margin-right: 1em;
+    margin-left: 1em;
+}
+
+.sortable {
+    display: list-item;
+}
+.pagination{
+    line-height: 3;
+    text-align: center;
+}
 /*.disable  {*/
-    /*opacity: 0.4;*/
-    /*filter: alpha(opacity=40); /!* msie *!/*/
-    /*background-color: #000;*/
+/*opacity: 0.4;*/
+/*filter: alpha(opacity=40); /!* msie *!/*/
+/*background-color: #000;*/
 /*}*/
 /*#card-menu{*/
-    /*opacity: 1 !important;*/
+/*opacity: 1 !important;*/
 
 /*}*/

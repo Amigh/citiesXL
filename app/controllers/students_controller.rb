@@ -6,7 +6,7 @@ class StudentsController < ApplicationController
   def index
     @year = sort_year
     @class_name = sort_class
-    @students = Student.where(:year=> sort_year , :class_name => sort_class).all
+    @students = Student.paginate(page: params[:page], per_page: 15).where(:year=> sort_year , :class_name => sort_class).all
   end
 
   def export

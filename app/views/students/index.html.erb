@@ -53,12 +53,18 @@
         <i class="caret down icon"></i>
       </div>
     </div>
+    <div class="ui pagination gray message" id="infinite-scrolling ">
+      <%= will_paginate  %>
+    </div>
     <div class="ui three link cards" id="list">
       <% @students.each do |student| %>
           <%= render 'students/student_card', :student => student %>
       <% end %>
     </div>
-
+    <br>
+    <div class="ui pagination gray message" id="infinite-scrolling ">
+      <%= will_paginate  %>
+    </div>
   </div>
 
 <script>
