@@ -4,12 +4,21 @@ class MedalsController < ApplicationController
   # GET /medals
   # GET /medals.json
   def index
-    @medals = Medal.all
+    @medals = Medal.paginate(page: params[:page], per_page: 18).order(:position).all
   end
 
   # GET /medals/1
   # GET /medals/1.json
   def show
+  end
+
+  def sort
+    if admin_signed_in?
+      params[:order].each do |key,value|
+        Medal.find(value[:id]).update_attribute(:position,value[:position])
+      end
+    end
+    render :nothing => true
   end
 
   # GET /medals/new
@@ -62,13 +71,13 @@ class MedalsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_medal
-      @medal = Medal.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_medal
+    @medal = Medal.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def medal_params
-      params.require(:medal).permit(:name, :description, :score, :image,:type_name ,:display_name)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def medal_params
+    params.require(:medal).permit(:name, :description, :score, :image,:type_name ,:display_name,:position)
+  end
 end

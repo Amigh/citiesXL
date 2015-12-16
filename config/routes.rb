@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   resources :tutorials
   resources :posts ,except: :show
   devise_for :admins
-  resources :medals
+  resources :medals do
+    put :sort, on: :collection
+  end
   resources :students  do
     collection do
       post 'export' => 'students#export'
