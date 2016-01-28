@@ -38,15 +38,31 @@
       </label>
       <%= f.file_field :image ,:style =>'display:none;' ,:id =>'file'%>
     </div>
+    <div class="field">
+      <%= f.label :file %>
+      <label for='file1' class='ui right labeled icon button'>
+        <i class="file icon"></i>
+        Browse ...
+      </label>
+      <%= f.file_field :file ,:style =>'display:none;' ,:id =>'file1'%>
+    </div>
+
     <%= f.submit 'تایید' ,:class => 'ui button green button' %>
 
 <% end %>
+<div class="hidden ui icon warning message " id="mes1">
+  <i class=" file image outline icon"></i>
+  <div class="content">
+    <p id="namefile1" ></p>
+  </div>
+</div>
 <div class="hidden ui icon warning message " id="mes">
   <i class=" file image outline icon"></i>
   <div class="content">
     <p id="namefile" ></p>
   </div>
 </div>
+
 <script>
 
     $('#file').change(function() {
@@ -55,4 +71,11 @@
         $('#namefile').text(str);
         $('#mes').removeClass("hidden");
     });
+    $('#file1').change(function() {
+        var str;
+        str = $(this).val();
+        $('#namefile1').text(str);
+        $('#mes1').removeClass("hidden");
+    });
+
 </script>

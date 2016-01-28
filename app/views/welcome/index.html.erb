@@ -23,35 +23,6 @@
     </div>
   </div>
 
-  <% @posts.each do |post| %>
-      <div class=" ui green card fluid">
-        <div class="content">
-          <div class="header">
-            <%= post.title %>
-          </div>
-        </div>
-        <% if post.image? %>
-            <div class="image">
-              <%= image_tag post.image %>
-            </div>
-        <% end %>
-        <div class="content">
-          <div class="description" style="direction:rtl;">
-            <%= post.content%>
-          </div>
-        </div>
-        <div class="extra content">
-      <span class=" floated">
-            <%= post.created_at.to_jalali.strftime("%A %d %B %Y") %>
-      </span>
-        </div>
-      </div>
-  <% end %>
-
-
-  <!--<a class="launch icon item">-->
-  <!--<i class="content icon"></i>-->
-  <!--</a>-->
   <% unless (@studentsA.first == nil or @studentsA.first.score == 0) and (@studentsB.first == nil or @studentsB.first.score == 0)%>
       <div class="ui segments">
         <div class="ui  segment">
@@ -77,4 +48,39 @@
         </div>
       </div>
   <% end %>
+
+  <% @posts.each do |post| %>
+      <div class=" ui green card fluid">
+        <div class="content">
+          <div class="header" style="direction: rtl;">
+            <%= post.title %>
+          </div>
+        </div>
+        <% if post.image? %>
+            <div class="image">
+              <%= image_tag post.image %>
+            </div>
+        <% end %>
+        <div class="content">
+          <div class="description" style="direction:rtl;">
+            <%= post.content%>
+          </div>
+        </div>
+        <div class="extra content">
+      <span class="right floated">
+            <%= post.created_at.to_jalali.strftime("%A %d %B %Y") %>
+      </span>
+<% if post.file?%>
+		<div class= "left floated">
+			<%=  link_to 'دریافت فایل', post.file_url,:target=>"_blank",:class=>"ui  green button"%>	
+		</div>
+<% end %>
+        </div>
+      </div>
+  <% end %>
+
+
+  <!--<a class="launch icon item">-->
+  <!--<i class="content icon"></i>-->
+  <!--</a>-->
 </div>
