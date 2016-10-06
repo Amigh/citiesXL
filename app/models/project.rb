@@ -2,7 +2,7 @@ class Project < ActiveRecord::Base
   validates :population, :cash_flow,:income,:money,
             :satis_people_1 ,:satis_people_2 ,:satis_people_3 ,:satis_people_4 ,
             :satis_work_1 ,:satis_work_2 ,:satis_work_3,:satis_work_4,presence: true
-  MEDAL_POPULATION_GOLD_LIMIT = 200000
+  MEDAL_POPULATION_GOLD_LIMIT = 150000
   MEDAL_POPULATION_SILVER_LIMIT = 100000
   MEDAL_POPULATION_BRONZE_LIMIT = 50000
 

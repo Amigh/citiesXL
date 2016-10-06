@@ -23,32 +23,6 @@
     </div>
   </div>
 
-  <% unless (@studentsA.first == nil or @studentsA.first.score == 0) and (@studentsB.first == nil or @studentsB.first.score == 0)%>
-      <div class="ui segments">
-        <div class="ui  segment">
-          <div class="ui header">
-            برترین ها
-          </div>
-        </div>
-        <div class="ui green secondary segment">
-          <div class="ui three link cards">
-            <div class="ui horizontal divider ">
-              کلاس الف
-            </div>
-            <% @studentsA.each do |student| %>
-                <%= render 'students/student_card', :student => student %>
-            <% end %>
-            <div class="ui horizontal divider ">
-              کلاس ب
-            </div>
-            <% @studentsB.each do |student| %>
-                <%= render 'students/student_card', :student => student %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-  <% end %>
-
   <% @posts.each do |post| %>
       <div class=" ui green card fluid">
         <div class="content">
@@ -75,6 +49,32 @@
 			<%=  link_to 'دریافت فایل', post.file_url,:target=>"_blank",:class=>"ui  green button"%>	
 		</div>
 <% end %>
+        </div>
+      </div>
+  <% end %>
+
+  <% unless (@studentsA.first == nil or @studentsA.first.score == 0) and (@studentsB.first == nil or @studentsB.first.score == 0)%>
+      <div class="ui segments">
+        <div class="ui  segment">
+          <div class="ui header">
+            برترین ها
+          </div>
+        </div>
+        <div class="ui green secondary segment">
+          <div class="ui three link cards">
+            <div class="ui horizontal divider ">
+              کلاس الف
+            </div>
+            <% @studentsA.each do |student| %>
+                <%= render 'students/student_card', :student => student %>
+            <% end %>
+            <div class="ui horizontal divider ">
+              کلاس ب
+            </div>
+            <% @studentsB.each do |student| %>
+                <%= render 'students/student_card', :student => student %>
+            <% end %>
+          </div>
         </div>
       </div>
   <% end %>
